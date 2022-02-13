@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} See Booking {% endblock title %}
+
+
+{% block content %}
+<h2>List of flights</h2>
+<table class="table table-striped">
+    <thead style="background-color: blue;color: white;">
+	<td>ID</td>
+    <td>NAME</td>
+    <td>SOURCE</td>
+    <td>DESTINATION</td>
+    <td>NUM OF SEATS</td>
+    <td>NUM OF SEATS REM</td>
+    <td>PRICE</td>
+    <td>DATE</td>
+    <td>TIME</td>
+
+    </thead>
+
+    {% for row in flight_list %}
+    <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.flight_name }}</td>
+        <td>{{ row.source }}</td>
+        <td>{{ row.destination }}</td>
+        <td>{{ row.number_of_seats }}</td>
+        <td>{{ row.number_of_seats_remaining }}</td>
+        <td>{{ row.price }}</td>
+        <td>{{ row.date }}</td>
+        <td>{{ row.time }}</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+<form action="{% url 'flights:booking_flight' %}" method="post">
+    <h3>Choose Flight to book</h3>
+    {% csrf_token %}
+    <div class="col-auto">
+        <label for="example-email-input" class="col-2 col-form-label">Flight ID</label>
+        <div class="col-5">
+            <input name='flight_id' class="form-control" type="number" id="example-email-input">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">Number of seats</label>
+        <div class="col-5">
+            <input name='number_of_seats' class="form-control" type="number">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">First name</label>
+        <div class="col-5">
+            <input name='first_name' class="form-control" type="text">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">Last name</label>
+        <div class="col-5">
+            <input name='last_name' class="form-control" type="text">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+        <div class="col-5">
+            <input name='email' class="form-control" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Gender</label>
+         <select type="text" class="form-control" id="" placeholder="..." name="gender">
+             <option>Male</option>
+             <option>Female</option>
+          </select>
+    </div>
+    <br>
+    <br>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-success float-left">Book Flight</button>
+    </div>
+
+</form>
+
+{% endblock content %}

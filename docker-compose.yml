@@ -1,0 +1,35 @@
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=flight_booking
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ag28e7kl
+    networks:
+      - main
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - flight_booking:/var/lib/postgresql/data
+
+  app:
+    build: .
+    command: sh -c "python manage.py migrate && gunicorn core.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - .:/src/
+    depends_on:
+      - postgres
+    expose:
+      - "8000"
+    networks: 
+      - main
+    restart: always
+
+
+networks:
+  main:
+volumes:
+  flight_booking:

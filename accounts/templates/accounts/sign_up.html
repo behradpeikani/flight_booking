@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign Up / Sign In {% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+		<form method="post">
+			{% csrf_token %}
+			<input type="text" name="mobile_phone" placeholder="Enter Mobile">
+			<button type="submit" class="btn btn-info">Sign Up / Sign In</button>
+		</form>
+	</div>
+</div>
+{% endblock content %}

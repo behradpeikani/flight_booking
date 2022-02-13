@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} See Booking {% endblock title %}
+
+{% block content %}
+<h2>List of flights</h2>
+<table class="table table-striped">
+    <thead style="background-color: blue;color: white;">
+    <td>BOOKING ID</td>
+    <td>FIRST NAME</td>
+    <td>LAST NAME</td>
+    <td>GENDER</td>
+    <td>EMAIL</td>
+    <td>FLIGHT NAME</td>
+    <td>SOURCE</td>
+    <td>DESTINATION</td>
+    <td>NUM OF SEATS</td>
+    <td>PRICE</td>
+    <td>DATE</td>
+    <td>TIME</td>
+
+
+    </thead>
+
+    {% for row in book_list %}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.first_name}}</td>
+        <td>{{row.last_name}}</td>
+        <td>{{row.gender}}</td>
+        <td>{{row.email}}</td>
+        <td>{{row.flight_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.destination}}</td>
+        <td>{{row.number_of_seats}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
