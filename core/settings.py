@@ -74,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'flight_booking',
         'USER': 'postgres',
-        'PASSWORD': 'ag28e7kl',
+        'PASSWORD': 'yourpassword',
         'HOST': 'localhost',
         'PORT': '5432'
     }
